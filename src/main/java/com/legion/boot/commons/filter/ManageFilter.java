@@ -8,7 +8,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.annotation.WebFilter;
 
 /**
  * 全局过滤器
@@ -16,13 +16,14 @@ import javax.servlet.http.HttpServletRequest;
  * @author xinggx
  * @date 2018年2月7日
  */
+@WebFilter
 public class ManageFilter implements Filter {
 	
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		System.out.println(httpRequest.getRequestURI());
+//		HttpServletRequest httpRequest = (HttpServletRequest) request;
+//		System.out.println("request URL -------> "+httpRequest.getRequestURI());
 		chain.doFilter(request, response);
 	}
 	

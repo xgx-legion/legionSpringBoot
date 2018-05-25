@@ -11,11 +11,39 @@ Srping boot修改内置tomcat端口方法
 方法二：application.propeties修改默认配置
 	 server.port=8088
 	 
-	 
-Thymeleaf
+springboot官方模板引擎：Thymeleaf
 
 WebJars
 
 cygwin
 是在Windows下面的Linux命令模拟器
 最好的方式是用VirtualBox装一个Linux虚拟机，在虚拟机中进行这些尝试。
+
+
+SprintBoot开发工具和博文
+开发工具：Spring Tool Suite v_3.7.2（简称STS） 
+官网地址：http://spring.io/tools/sts
+https://blog.csdn.net/catoop/article/details/50501664
+
+---------------- springBoot 全局配置器 ------------------
+-----------------------------------------------------
+@Configuration标记的类将被定义为全局配置器 
+通过@Bean完成配置注册
+link:GlobalConfiguration.java
+
+------ springBoot Servlet/过滤器Filter/监听器listence --------
+----------------------------------------------------------
+在 SpringBootApplication上使用@ServletComponentScan 注解后
+Servlet、Filter、Listener 可以直接通过 @WebServlet、@WebFilter、@WebListener 注解自动注册，无需其他代码
+
+在全局配置器中手动添加自定义过滤器
+@Bean
+public FilterRegistrationBean filterRegistration() {
+	FilterRegistrationBean registration = new FilterRegistrationBean();
+	registration.setFilter(new ManageFilter());
+	registration.addUrlPatterns("/*");
+	registration.addInitParameter("paramName", "paramValue");
+	registration.setName("ManageFilter");
+	registration.setOrder(1);
+	return registration;
+}

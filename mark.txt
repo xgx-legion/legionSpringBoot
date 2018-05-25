@@ -1,0 +1,21 @@
+快速构建Spring Boot项目
+website：Spring Initializr
+url：http://start.spring.io/
+
+Srping boot修改内置tomcat端口方法
+方法一：Application实现EmbeddedServletContainerCustomizer接口
+	 @Override
+	 public void customize(ConfigurableEmbeddedServletContainer container){
+	 	container.setPort(8088);
+	 }
+方法二：application.propeties修改默认配置
+	 server.port=8088
+	 
+	 
+Thymeleaf
+
+WebJars
+
+cygwin
+是在Windows下面的Linux命令模拟器
+最好的方式是用VirtualBox装一个Linux虚拟机，在虚拟机中进行这些尝试。
